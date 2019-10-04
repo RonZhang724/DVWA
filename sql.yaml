@@ -1,7 +1,7 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: dvwa
+  name: sql
 spec:
   selector:
     matchLabels:
@@ -14,13 +14,9 @@ spec:
         app: dvwa-app
     spec:
       containers:
-      - image: localhost:32000/vulnerables/web-dvwa:k8s
-        name: dvwa
+      - image: localhost:32000/sql:k8s
+        name: sql
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
-          name: dvwa
-        resources:
-          limits:
-            cpu: 100m
-            memory: 70Mi
+          name: sql
